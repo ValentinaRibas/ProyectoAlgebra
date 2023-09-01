@@ -1,10 +1,11 @@
 import numpy as np
 import pandas as pd
 
-tweet1="Excelente en su área, su muerte es una enorme pérdida y debería ser luto nacional!!!"
-tweet2="Vaya señora que bueno que se asesora por alguien inteligente luto."
-tweet3="Se me ocurre y sin ir a clase me informéis por dónde empiezo. Entiendo que os tendría que decir quién soy y que quiero, vamos conocerme para asesorarme bien. Un saludo"
-tweet4="Soy docente universitario, estoy intentando preparar mis clases en modo bien didáctico,(le llamo modo noticiero), descargue una plataforma gratuita de grabación y transmisión de vídeo, se llama Obs estudio! bueno la sigo remando con sus funciones pero sé que saldrá algo!"
+tweet1="Fernando Alonso se dirige a los 'Tifosi': Es un placer estar aquí siempre, aunque no esté en Ferrari. Espero que tengamos por fin una carrera en seco y hacer un buen espectáculo para todos vosotros. También deseo que a Ferrari le vaya bien"
+tweet2="El ridículo es que es tremendo la diferencia entre Ferrari y Red Bull, muy malo el trabajo de los pits de Ferrari"
+tweet3="El Domingo veremos el mejor podio de 2023, La pasión y el amor de los fans de Ferrari hace que las victorias de otros equipos en Monza sean uno de los momentos más memorables de la temporada"
+tweet4="Llego el Patrón al ItalianGP buongiorno Checo! Por un buen fin de semana! Vamos Checo a ganar"
+tweet5="A mi lo de ver la TV mientras desayunaba antes de ir a clase y que me apareciese la F1 a las 7 de la mañana me ponía de muy buen humor, que bien la pasaba"
 
 positive_words = ["excelente",
                   "gran",
@@ -85,7 +86,7 @@ def score(tweet):
 
 
 def main():
-    tweets = np.array([tweet1, tweet2, tweet3, tweet4])
+    tweets = np.array([tweet1, tweet2, tweet3, tweet4, tweet5])
     
     most_positive_tweet = most_positive(tweets)
     print("Tweet mas positivo: ", most_positive_tweet)
