@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-tweet1="Fernando Alonso se dirige a los 'Tifosi': Es un placer estar aquí siempre, aunque no esté en Ferrari. Espero que tengamos por fin una carrera en seco y hacer un buen espectáculo para todos vosotros. También deseo que a Ferrari le vaya bien"
+tweet1="Alonso: Es un placer estar aquí siempre, siento amor por la Tifosi. Espero hacer un buen espectáculo para todos. Deseo que a Ferrari le vaya bien"
 tweet2="El ridículo es que es enorme la diferencia entre Ferrari y Red Bull, muy malo el trabajo de los pits de Ferrari, son el peor del campeonato"
 tweet3="El Domingo veremos el mejor podio de 2023, La pasión y el amor de los fans de Ferrari hace que las victorias de otros equipos en Monza sean uno de los momentos más memorables de la temporada"
 tweet4="Llego el Patrón al ItalianGP buongiorno Checo! Por un buen fin de semana! Vamos Checo a ganar"
@@ -23,7 +23,26 @@ positive_words = ["excelente",
 
 neutro_words = ["pérdida",
                 "enorme",
-                "diferencia"]
+                "diferencia",
+                "siempre",
+                "si",
+                "no",
+                "Espero",
+                "espectáculo",
+                "muy",
+                "trabajo",
+                "hace",
+                "memorables",
+                "momentos",
+                "buongiorno",
+                "fin",
+                "semana",
+                "vamos",
+                "puedo",
+                "cuando",
+                "Ferrari",
+                "Red",
+                "Bull"]
 
 negative_words = ["muerte",
                   "luto",
@@ -37,31 +56,50 @@ negative_words = ["muerte",
                   "nefasto"]
 
 words = ["excelente",
-                  "gran",
-                  "positivo",
-                  "placer",
-                  "buen",
-                  "deseo",
-                  "bien",
-                  "mejor",
-                  "pasión",
-                  "amor",
-                  "victorias",
-                  "buen",
-                  "ganar",
-                  "pérdida",
-                  "enorme",
-                  "diferencia",
-                  "muerte",
-                  "luto",
-                  "ridículo",
-                  "malo",
-                  "peor",
-                  "malos",
-                  "quejas",
-                  "llorando",
-                  "desastre",
-                  "nefasto"]
+         "gran",
+         "positivo",
+        "placer",
+        "buen",
+        "deseo",
+        "bien",
+        "mejor",
+        "pasión",
+        "amor",
+        "victorias",
+        "buen",
+        "ganar",
+        "pérdida",
+        "enorme",
+        "diferencia",
+        "siempre",
+        "si",
+        "no",
+        "Espero",
+        "espectáculo",
+        "muy",
+        "trabajo",
+        "hace",
+        "memorables",
+        "momentos",
+        "buongiorno",
+        "fin",
+        "semana",
+        "vamos",
+        "puedo",
+        "cuando",
+        "Ferrari",
+        "Red",
+        "Bull"
+        "muerte",
+        "luto",
+        "ridículo",
+        "malo",
+        "peor",
+        "malos",
+        "quejas",
+        "llorando",
+        "desastre",
+        "nefasto"]
 
 
 def count_words_in_tweet(tweet):
@@ -116,8 +154,9 @@ def most_negative(tweets):
 
 def average_quality(tweet):
     tweet_array = tweet.replace("!","").replace(",","").replace(".","").replace("(","").replace(")","").split()
-    quantity = len(tweet_array)
-    return (1 / quantity) * (count_words_in_tweet(tweet))
+    quality = sum(count_words_in_tweet(tweet))
+    avg_quality = quality / len(tweet_array)
+    return avg_quality
 
 def score(tweet):
     b = count_group_of_words(tweet)
