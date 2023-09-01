@@ -1,26 +1,105 @@
 import numpy as np
 import pandas as pd
 
-tweet1="Excelente en su área, su muerte es una enorme pérdida y debería ser luto nacional!!!"
-tweet2="Vaya señora que bueno que se asesora por alguien inteligente luto."
-tweet3="Se me ocurre y sin ir a clase me informéis por dónde empiezo. Entiendo que os tendría que decir quién soy y que quiero, vamos conocerme para asesorarme bien. Un saludo"
-tweet4="Soy docente universitario, estoy intentando preparar mis clases en modo bien didáctico,(le llamo modo noticiero), descargue una plataforma gratuita de grabación y transmisión de vídeo, se llama Obs estudio! bueno la sigo remando con sus funciones pero sé que saldrá algo!"
+tweet1="Alonso: Es un placer estar aquí siempre, siento amor por la Tifosi. Espero hacer un buen espectáculo para todos. Deseo que a Ferrari le vaya bien"
+tweet2="El ridículo es que es enorme la diferencia entre Ferrari y Red Bull, muy malo el trabajo de los pits de Ferrari, son el peor del campeonato"
+tweet3="El Domingo veremos el mejor podio de 2023, La pasión y el amor de los fans de Ferrari hace que las victorias de otros equipos en Monza sean uno de los momentos más memorables de la temporada"
+tweet4="Llego el Patrón al ItalianGP buongiorno Checo! Por un buen fin de semana! Vamos Checo a ganar"
+tweet5="Ya no puedo con Ferrari, siempre estan con quejas, llorando por su coche que no es rápido, hasta cuando van a seguir sin ganar, ya es un desastre esto, nefasto el rendimiento"
 
 positive_words = ["excelente",
                   "gran",
-                  "positivo"]
+                  "positivo",
+                  "placer",
+                  "buen",
+                  "deseo",
+                  "bien",
+                  "mejor",
+                  "pasión",
+                  "amor",
+                  "victorias",
+                  "buen",
+                  "ganar"]
 
-neutro_words = ["pérdida"]
+neutro_words = ["pérdida",
+                "enorme",
+                "diferencia",
+                "siempre",
+                "si",
+                "no",
+                "Espero",
+                "espectáculo",
+                "muy",
+                "trabajo",
+                "hace",
+                "memorables",
+                "momentos",
+                "buongiorno",
+                "fin",
+                "semana",
+                "vamos",
+                "puedo",
+                "cuando",
+                "Ferrari",
+                "Red",
+                "Bull"]
 
 negative_words = ["muerte",
-                  "luto"]
+                  "luto",
+                  "ridículo",
+                  "malo",
+                  "peor",
+                  "malos",
+                  "quejas",
+                  "llorando",
+                  "desastre",
+                  "nefasto"]
 
 words = ["excelente",
-        "gran",
-        "positivo",
+         "gran",
+         "positivo",
+        "placer",
+        "buen",
+        "deseo",
+        "bien",
+        "mejor",
+        "pasión",
+        "amor",
+        "victorias",
+        "buen",
+        "ganar",
         "pérdida",
+        "enorme",
+        "diferencia",
+        "siempre",
+        "si",
+        "no",
+        "Espero",
+        "espectáculo",
+        "muy",
+        "trabajo",
+        "hace",
+        "memorables",
+        "momentos",
+        "buongiorno",
+        "fin",
+        "semana",
+        "vamos",
+        "puedo",
+        "cuando",
+        "Ferrari",
+        "Red",
+        "Bull"
         "muerte",
-        "luto"]
+        "luto",
+        "ridículo",
+        "malo",
+        "peor",
+        "malos",
+        "quejas",
+        "llorando",
+        "desastre",
+        "nefasto"]
 
 
 def count_words_in_tweet(tweet):
@@ -75,8 +154,9 @@ def most_negative(tweets):
 
 def average_quality(tweet):
     tweet_array = tweet.replace("!","").replace(",","").replace(".","").replace("(","").replace(")","").split()
-    quantity = len(tweet_array)
-    return (1 / quantity) * (count_words_in_tweet(tweet))
+    quality = sum(count_words_in_tweet(tweet))
+    avg_quality = np.dot(1 / len(tweet_array), quality)
+    return avg_quality
 
 def score(tweet):
     b = count_group_of_words(tweet)
@@ -85,7 +165,7 @@ def score(tweet):
 
 
 def main():
-    tweets = np.array([tweet1, tweet2, tweet3, tweet4])
+    tweets = np.array([tweet1, tweet2, tweet3, tweet4, tweet5])
     
     most_positive_tweet = most_positive(tweets)
     print("Tweet mas positivo: ", most_positive_tweet)
