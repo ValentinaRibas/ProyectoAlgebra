@@ -155,7 +155,7 @@ def most_negative(tweets):
 def average_quality(tweet):
     tweet_array = tweet.replace("!","").replace(",","").replace(".","").replace("(","").replace(")","").split()
     quality = sum(count_words_in_tweet(tweet))
-    avg_quality = quality / len(tweet_array)
+    avg_quality = np.dot(1 / len(tweet_array), quality)
     return avg_quality
 
 def score(tweet):
