@@ -191,6 +191,8 @@ def main():
     avg_score = average_score(tweets)
     print("El promedio total de calidad de los tweets es", total_avg)
     print("El promedio total de puntaje de los tweets es", avg_score)
+    print("\nFin de procesamiento para preguntas")
+    print("----------------------------------------------------------")
     
     
 if __name__ == "__main__":
