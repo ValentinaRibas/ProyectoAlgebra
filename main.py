@@ -139,7 +139,6 @@ def most_negative(tweets):
     return most_negative_tweet
 
 def average_quality(tweet):
-    tweet_array = tweet.replace("!","").replace(",","").replace(".","").replace("(","").replace(")","").split()
     n = len(words)
     w = sum(count_words_in_tweet(tweet))
     avg_quality = np.dot(1/n,w)
@@ -150,6 +149,21 @@ def score(tweet):
     a = np.array([1,0,-1])
     return np.dot(a,b)
 
+def total_average(tweets):
+    added_average = 0
+    for tw in tweets:
+        avg = average_quality(tw)
+        added_average += avg
+    total_average = added_average / 5
+    return total_average
+
+def average_score(tweets):
+    added_score = 0
+    for tw in tweets:
+        indiv_score = score(tw)
+        added_score += indiv_score
+    avg_score = added_score / 5
+    return avg_score
 
 def main():
     print("----------------------------------------------------------")
@@ -170,6 +184,14 @@ def main():
         print("Cantidad de palabras detectadas: ", w)
         print("Promedio de calidad: ", avg)
         print("Score: ", sc)
-
+    print("\nFin de procesamiento principal")
+    print("----------------------------------------------------------")
+    print("Inicio de procesamiento para preguntas de informe")
+    total_avg = total_average(tweets)
+    avg_score = average_score(tweets)
+    print("El promedio total de calidad de los tweets es", total_avg)
+    print("El promedio total de puntaje de los tweets es", avg_score)
+    
+    
 if __name__ == "__main__":
     main()
